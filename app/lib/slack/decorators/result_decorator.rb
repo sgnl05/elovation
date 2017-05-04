@@ -8,7 +8,7 @@ module Slack
       end
 
       def message
-        "<#{player_url}|#{@player.name}>: #{ordinalized_ranking(old_ranking)} #{ranking_emoji}: *#{ordinalized_ranking(ranking)}* (#{old_rating} #{rating_emoji} *#{rating}*) #{rating_change} pts"
+        "<#{player_url}|#{@player.name}>: #{ordinalized_ranking(old_ranking)} #{ranking_emoji} *#{ordinalized_ranking(ranking)}* (#{old_rating} #{rating_emoji} *#{rating}*) #{rating_change} pts"
       end
 
       def player_url
@@ -39,7 +39,7 @@ module Slack
         if old_ranking == 'NR' || old_ranking > ranking
           ':uptoplan:'
         elsif old_ranking == ranking
-          ':flattoplan'
+          ':flattoplan:'
         else
           ':downtoplan:'
         end
