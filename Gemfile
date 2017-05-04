@@ -17,6 +17,7 @@ gem 'elo'
 gem 'trueskill', github: 'saulabs/trueskill', require: 'saulabs/trueskill'
 gem 'slack-ruby-client'
 gem 'terminal-table'
+gem 'rails-assets-spectrum', source: 'https://rails-assets.org'
 
 group :production do
   gem 'rails_12factor'

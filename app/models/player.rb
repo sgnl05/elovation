@@ -25,7 +25,7 @@ class Player < ActiveRecord::Base
     results.each { |result| result.destroy }
   end
 
-  before_create do |player|
+  after_initialize do |player|
     player.color = SecureRandom.hex(3) if player.color.nil?
   end
 

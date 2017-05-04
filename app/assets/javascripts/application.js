@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require chosen.min
+//= require spectrum
 //= require_tree .
