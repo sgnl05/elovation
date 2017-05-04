@@ -25,8 +25,13 @@ class Player < ActiveRecord::Base
     results.each { |result| result.destroy }
   end
 
+  after_initialize do |player|
+    player.color = SecureRandom.hex(3) if player.color.nil?
+  end
+
   validates :name, uniqueness: true, presence: true
   validates :email, allow_blank: true, format: /@/
+  validates :color, presence: true, format: /[0-9a-f]{6}/
 
   def as_json
     {

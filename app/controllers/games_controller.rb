@@ -54,7 +54,9 @@ class GamesController < ApplicationController
     # sort players by final rating for display in chart
     sorted_players = players.sort { |a, b| b.ratings.where(game: @game).first.value <=> a.ratings.where(game: @game).first.value }
 
+    @chart_colors = []
     @chart_data = sorted_players.map do |player|
+      @chart_colors << "##{player.color}"
       {:name => player.name, :data => player_to_days[player.name].to_a}
     end
 

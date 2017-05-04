@@ -17,6 +17,14 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :color, class: "control-label" %>
+    <div class="controls">
+      <%= hidden_field_tag 'colorpicker', @player.color, class: "colorpicker" %>
+      <%= f.hidden_field :color, id: 'color' %>
+    </div>
+  </div>
+
   <div class="form-actions">
     <%= f.submit class: "btn btn-primary" %>
     <%= link_to "Cancel", root_path, class: "btn btn-warning" %>
@@ -27,3 +35,16 @@
   </small>
 
 <% end %>
+
+<%= javascript_tag do %>
+
+    $(function(){
+      $('.colorpicker').spectrum({
+        preferredFormat: 'hex',
+        change: function(color){
+          $('#color').val(color.toHex())
+        }
+      })
+    })
+
+<%end %>
