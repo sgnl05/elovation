@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425005600) do
+ActiveRecord::Schema.define(version: 20170504163956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170425005600) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "slack_id"
+    t.string   "color"
   end
 
   create_table "players_teams", force: :cascade do |t|
