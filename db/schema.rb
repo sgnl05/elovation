@@ -15,75 +15,75 @@ ActiveRecord::Schema.define(version: 20170504163956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "games", force: :cascade do |t|
-    t.string   "name",                                          null: false
+  create_table "games", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "rating_type"
-    t.integer  "min_number_of_teams"
-    t.integer  "max_number_of_teams"
-    t.integer  "min_number_of_players_per_team"
-    t.integer  "max_number_of_players_per_team"
-    t.boolean  "allow_ties"
-    t.boolean  "active",                         default: true
+    t.string "rating_type", limit: 255
+    t.integer "min_number_of_teams"
+    t.integer "max_number_of_teams"
+    t.integer "min_number_of_players_per_team"
+    t.integer "max_number_of_players_per_team"
+    t.boolean "allow_ties"
+    t.boolean "active", default: true
   end
 
-  create_table "players", force: :cascade do |t|
-    t.string   "name",       null: false
+  create_table "players", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
-    t.string   "slack_id"
-    t.string   "color"
+    t.string "email", limit: 255
+    t.string "slack_id"
+    t.string "color"
   end
 
-  create_table "players_teams", force: :cascade do |t|
+  create_table "players_teams", id: :serial, force: :cascade do |t|
     t.integer "player_id"
     t.integer "team_id"
   end
 
-  create_table "rating_history_events", force: :cascade do |t|
-    t.integer  "rating_id",           null: false
-    t.integer  "value",               null: false
+  create_table "rating_history_events", id: :serial, force: :cascade do |t|
+    t.integer "rating_id", null: false
+    t.integer "value", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "trueskill_mean"
-    t.float    "trueskill_deviation"
-    t.index ["rating_id"], name: "index_rating_history_events_on_rating_id", using: :btree
+    t.float "trueskill_mean"
+    t.float "trueskill_deviation"
+    t.index ["rating_id"], name: "index_rating_history_events_on_rating_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer  "player_id",           null: false
-    t.integer  "game_id",             null: false
-    t.integer  "value",               null: false
-    t.boolean  "pro",                 null: false
+  create_table "ratings", id: :serial, force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "game_id", null: false
+    t.integer "value", null: false
+    t.boolean "pro", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "trueskill_mean"
-    t.float    "trueskill_deviation"
-    t.index ["game_id"], name: "index_ratings_on_game_id", using: :btree
-    t.index ["player_id"], name: "index_ratings_on_player_id", using: :btree
+    t.float "trueskill_mean"
+    t.float "trueskill_deviation"
+    t.index ["game_id"], name: "index_ratings_on_game_id"
+    t.index ["player_id"], name: "index_ratings_on_player_id"
   end
 
-  create_table "results", force: :cascade do |t|
-    t.integer  "game_id",    null: false
+  create_table "results", id: :serial, force: :cascade do |t|
+    t.integer "game_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["game_id"], name: "index_results_on_game_id", using: :btree
+    t.index ["game_id"], name: "index_results_on_game_id"
   end
 
-  create_table "slack_authorizations", force: :cascade do |t|
+  create_table "slack_authorizations", id: :serial, force: :cascade do |t|
     t.string "access_token"
     t.string "scope"
     t.string "user_id"
     t.string "team_name"
     t.string "team_id"
-    t.index ["team_id"], name: "index_slack_authorizations_on_team_id", using: :btree
+    t.index ["team_id"], name: "index_slack_authorizations_on_team_id"
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.integer  "rank"
-    t.integer  "result_id"
+  create_table "teams", id: :serial, force: :cascade do |t|
+    t.integer "rank"
+    t.integer "result_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
