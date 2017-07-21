@@ -21,5 +21,7 @@ module Elovation
         [u, p] == [ENV['BASIC_AUTH_USER'], ENV['BASIC_AUTH_PASSWORD']]
       end
     end
+
+    config.active_job.queue_adapter = :delayed_job
   end
 end

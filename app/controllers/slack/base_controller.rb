@@ -6,11 +6,11 @@ module Slack
       payload = JSON.parse(params[:payload]).with_indifferent_access
       case payload[:callback_id]
         when 'record_result'
-          render text: 'Recording Result...'
-          Thread.new { Slack::Result.create(payload) }
+          RecordResultJob.perform_later payload
+          render plain: 'Recording Result...'
         when 'leaderboard'
-          render text: 'Loading Leaderboard...'
-          Thread.new { Slack::Leaderboard.show(payload) }
+          LeaderboardJob.perform_later(payload)
+          render plain: 'Loading Leaderboard...'
       end
     end
 
