@@ -18,6 +18,7 @@ gem 'trueskill', github: 'saulabs/trueskill', require: 'saulabs/trueskill'
 gem 'slack-ruby-client'
 gem 'terminal-table'
 gem 'rails-assets-spectrum', source: 'https://rails-assets.org'
+gem 'delayed_job_active_record'
 
 group :production do
   gem 'unicorn'
