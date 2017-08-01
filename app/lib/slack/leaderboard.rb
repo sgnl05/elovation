@@ -2,7 +2,9 @@ module Slack
   class Leaderboard
     def self.show(payload)
       game = Game.find(payload['actions'][0]['selected_options'][0]['value'])
-      rows = game.all_ratings.select(&:active?).map.with_index(1) do |rating, index|
+      ratings = game.all_ratings
+      ratings = game.all_ratings.select(&:active?) if game.active? 
+      rows = ratings.map.with_index(1) do |rating, index|
         [index, rating.player.name, rating.value, rating.player.total_wins(rating.game), rating.player.results.for_game(rating.game).losses.size]
       end
       game_url = Rails.application.routes.url_helpers.game_url(game, host: ENV['HOST'])
