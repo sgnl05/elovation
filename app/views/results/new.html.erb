@@ -2,7 +2,7 @@
   <%= f.error_messages %>
 
   <% @result.teams.each.with_index do |team, index| %>
-    <%= select "result[teams][#{index}]", "players", player_options, {include_blank: ''}, class: "players", multiple: @game.max_number_of_players_per_team != 1, "data-placeholder" => "Team #{index + 1}" %>
+    <%= select "result[teams][#{index}]", "players", player_options, {include_blank: ''}, class: "players", :input_html => { "data-multi-select" => true }, multiple: @game.max_number_of_players_per_team != 1, "data-placeholder" => "Team #{index + 1}" %>
 
     <% if index != @result.teams.size - 1 %>
       <% if @game.allow_ties %>
