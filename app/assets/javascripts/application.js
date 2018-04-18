@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require multi-select
 //= require chosen.min
 //= require spectrum
 //= require_tree .
