@@ -8,6 +8,7 @@ gem 'pg'
 
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
+gem 'multi-select-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'chartkick'
