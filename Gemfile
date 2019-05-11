@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.1'
+ruby '2.4.4'
 
 gem 'rails', '~> 5.1'
 
@@ -8,6 +8,7 @@ gem 'pg'
 
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
+gem 'multi-select-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'chartkick'
